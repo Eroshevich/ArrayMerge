@@ -11,6 +11,7 @@ $props = [
 ],
     'extra' => 'value'];
 $result = array_merge($params, $props);
+
 foreach($result as $key=>$value) {
     if ( array_key_exists($key,$params)) {
         $result=array_intersect_key($props, $params);
