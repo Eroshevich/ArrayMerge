@@ -10,12 +10,14 @@ $props = [
         'extra' => 'value'
 ],
     'extra' => 'value'];
-$result = array_merge($params, $props);
 
-foreach($result as $key=>$value) {
-    if ( array_key_exists($key,$params)) {
-        $result=array_intersect_key($props, $params);
-        $params[ $props[$key] ] = $value;
+$mergeArrayObject = new ArrayObject($params);
+$result = $mergeArrayObject->exchangeArray($props);
+foreach($mergeArrayObject as $key=>$value) {
+    if ( array_key_exists($key,$result)) {
+        $mergeArrayObject=array_intersect_key($props, $result);
+        $result[ $props[$key] ] = $value;
     }
 }
-print_r($result);
+
+print_r($mergeArrayObject);
