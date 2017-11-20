@@ -11,13 +11,16 @@ $props = [
 ],
     'extra' => 'value'];
 
-$mergeArrayObject = new ArrayObject($params);
-$result = $mergeArrayObject->exchangeArray($props);
-foreach($mergeArrayObject as $key=>$value) {
-    if ( array_key_exists($key,$result)) {
-        $mergeArrayObject=array_intersect_key($props, $result);
-        $result[ $props[$key] ] = $value;
+$result = [];
+
+foreach ($params as $key => &$value) {
+    foreach ($props as $key2 => &$value2) {
+        if($key == $key2){
+            $result = $value2;
+       } else {
+          unset($key2); 
+        }
     }
 }
+print_r($result);
 
-print_r($mergeArrayObject);
