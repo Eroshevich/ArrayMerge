@@ -27,6 +27,7 @@ $props = [
                     print_r ($iterator);
                 }
             }
+            $iterator->getDepth();
         }
     $iterator->next();
     }
