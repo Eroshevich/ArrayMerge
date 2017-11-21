@@ -22,12 +22,11 @@ $props = [
                 if (array_key_exists($key, $iterator)){
                 $iterator[$key] = $props[$key];
                 }
-                if ($iterator[$key] == $props[$key]){
+                if ($props){
                 $iterator[$key] = $value;
                     print_r ($iterator);
                 }
             }
-            $iterator->getDepth();
         }
     $iterator->next();
     }
