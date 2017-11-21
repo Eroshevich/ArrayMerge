@@ -14,17 +14,17 @@ $props = [
     'extra' => 'value'];
     $result = [$params];
     $iterator = new RecursiveArrayIterator($result);
-    
-    while ($iterator->valid()) {
+          
+while ($iterator->valid()) {
     if ($iterator->hasChildren()) {
         foreach ($iterator->getChildren() as $key => $value) {
-            foreach ($props as $key => $value) {
+            foreach ($props as $key2 => $value2) {
                 if (array_key_exists($key, $iterator)){
-                $iterator[$key] = $props[$key];
+                $iterator[$key] = $props[$key2];
                 }
                 if ($props){
-                $iterator[$key] = $value;
-                    print_r ($iterator);
+                    $iterator[$key] = $value2;
+                    var_dump (iterator_to_array($iterator,true));
                 }
             }
         }
