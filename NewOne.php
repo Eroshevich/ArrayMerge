@@ -22,9 +22,11 @@ while ($iterator->valid()) {
                 if (array_key_exists($key, $iterator)){
                 $iterator[$key] = $props[$key2];
                 }
-                if ($props){
-                    $iterator[$key] = $value2;
-                    var_dump (iterator_to_array($iterator,true));
+                if ($iterator[$key] = $props[$key2]){
+                    $value = $value2;
+                    $iterator[$key] = $value;
+                    $result2 = $iterator[$key];
+                   var_dump ($result2);
                 }
             }
         }
