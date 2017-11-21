@@ -19,14 +19,14 @@ $props = [
     if ($iterator->hasChildren()) {
         foreach ($iterator->getChildren() as $key => $value) {
             foreach ($props as $key => $value) {
-                if (array_key_exists($key, $props)){
+                if (array_key_exists($key, $iterator)){
                 $iterator[$key] = $props[$key];
                 }
-                if ($props){
+                if ($iterator[$key] == $props[$key]){
                 $iterator[$key] = $value;
+                    print_r ($iterator);
                 }
             }
-        print_r ($iterator);
         }
     $iterator->next();
     }
