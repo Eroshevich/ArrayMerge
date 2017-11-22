@@ -12,24 +12,34 @@ $props = [
         'extra' => 'value'
     ],
     'extra' => 'value'];
-    $result = [$params];
-    $iterator = new RecursiveArrayIterator($result);
-          
-while ($iterator->valid()) {
-    if ($iterator->hasChildren()) {
-        foreach ($iterator->getChildren() as $key => $value) {
-            foreach ($props as $key2 => $value2) {
-                if (array_key_exists($key, $iterator)){
-                $iterator[$key] = $props[$key2];
-                }
-                if ($iterator[$key] = $props[$key2]){
-                    $value = $value2;
-                    $iterator[$key] = $value;
-                    $result2 = $iterator[$key];
-                   var_dump ($result2);
-                }
+ 
+$result = [$params];
+
+$iterator = new RecursiveArrayIterator($result);
+iterator_apply($iterator, 'traverseStructure', array($iterator));
+
+function traverseStructure($iterator) {
+   
+    while ( $iterator->valid() ) {
+
+        if ( $iterator->hasChildren() ) {
+       
+            traverseStructure($iterator->getChildren());
+        }
+        $iterator -> next();
+    }
+} 
+    $new = [$iterator];
+    
+    foreach ($new as $key => $value){
+        foreach ($props as $key2 => $value2){
+            if (array_key_exists($key, $new)){
+                $new[$key] = $props[$key2];
+            }
+            if ($new[$key] = $props[$key2]){
+                $new[$key] = $value2;
+            }
+            print_r ($new);
+            break;
             }
         }
-    $iterator->next();
-    }
-}
