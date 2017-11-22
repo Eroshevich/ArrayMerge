@@ -16,8 +16,9 @@ $result = [$params,$props];
 $arrayIterator = new RecursiveArrayIterator($result);
 $iterator = new RecursiveIteratorIterator($arrayIterator);
 
-foreach ($iterator as $key => $value) {
-  $depth = $iterator->getDepth();
-  print_r ("depth=$depth k=$key v=$value\n");
+for($iterator; $iterator->valid(); $iterator->next()){
+    foreach ($iterator as $key => $value) {
+      $depth = $iterator->getDepth();
+      print_r ("depth=$depth k=$key v=$value\n");
+    }
 }
-?>
